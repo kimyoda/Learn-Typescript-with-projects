@@ -48,6 +48,7 @@ interface UserProfile {
 //   email?: string;
 //   profilePhotoUrl?: string;
 // }
+
 // #1 첫번째 방식
 // type UserProfileUpdate = {
 //   username?: UserProfile["username"];
