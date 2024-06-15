@@ -8,6 +8,7 @@ function getUnixTimestamp(date: Date) {
 
 // DOM
 var a: Element | HTMLElement | HTMLParagraphElement;
+// index.html에 있는 속성들을 확인하여 그에 맞게 타입단언
 const confirmedTotal = $(".confirmed-total") as HTMLSpanElement;
 // 타입을 단언하여 선언(as를 활용)
 const deathsTotal = $(".deaths") as HTMLParagraphElement;
