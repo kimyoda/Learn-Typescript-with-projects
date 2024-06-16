@@ -18,7 +18,7 @@ var __awaiter =
       }
       function rejected(value) {
         try {
-          step(generator["throw"](value));
+          step(generator['throw'](value));
         } catch (e) {
           reject(e);
         }
@@ -49,7 +49,7 @@ var __generator =
       g;
     return (
       (g = { next: verb(0), throw: verb(1), return: verb(2) }),
-      typeof Symbol === "function" &&
+      typeof Symbol === 'function' &&
         (g[Symbol.iterator] = function () {
           return this;
         }),
@@ -61,7 +61,7 @@ var __generator =
       };
     }
     function step(op) {
-      if (f) throw new TypeError("Generator is already executing.");
+      if (f) throw new TypeError('Generator is already executing.');
       while ((g && ((g = 0), op[0] && (_ = 0)), _))
         try {
           if (
@@ -69,9 +69,9 @@ var __generator =
             y &&
               (t =
                 op[0] & 2
-                  ? y["return"]
+                  ? y['return']
                   : op[0]
-                    ? y["throw"] || ((t = y["return"]) && t.call(y), 0)
+                    ? y['throw'] || ((t = y['return']) && t.call(y), 0)
                     : y.next) &&
               !(t = t.call(y, op[1])).done)
           )
@@ -139,41 +139,41 @@ function getUnixTimestamp(date) {
   return new Date(date).getTime();
 }
 // DOM
-var confirmedTotal = $(".confirmed-total");
-var deathsTotal = $(".deaths");
-var recoveredTotal = $(".recovered");
-var lastUpdatedTime = $(".last-updated-time");
-var rankList = $(".rank-list");
-var deathsList = $(".deaths-list");
-var recoveredList = $(".recovered-list");
-var deathSpinner = createSpinnerElement("deaths-spinner");
-var recoveredSpinner = createSpinnerElement("recovered-spinner");
+var confirmedTotal = $('.confirmed-total');
+var deathsTotal = $('.deaths');
+var recoveredTotal = $('.recovered');
+var lastUpdatedTime = $('.last-updated-time');
+var rankList = $('.rank-list');
+var deathsList = $('.deaths-list');
+var recoveredList = $('.recovered-list');
+var deathSpinner = createSpinnerElement('deaths-spinner');
+var recoveredSpinner = createSpinnerElement('recovered-spinner');
 function createSpinnerElement(id) {
-  var wrapperDiv = document.createElement("div");
-  wrapperDiv.setAttribute("id", id);
+  var wrapperDiv = document.createElement('div');
+  wrapperDiv.setAttribute('id', id);
   wrapperDiv.setAttribute(
-    "class",
-    "spinner-wrapper flex justify-center align-center",
+    'class',
+    'spinner-wrapper flex justify-center align-center',
   );
-  var spinnerDiv = document.createElement("div");
-  spinnerDiv.setAttribute("class", "ripple-spinner");
-  spinnerDiv.appendChild(document.createElement("div"));
-  spinnerDiv.appendChild(document.createElement("div"));
+  var spinnerDiv = document.createElement('div');
+  spinnerDiv.setAttribute('class', 'ripple-spinner');
+  spinnerDiv.appendChild(document.createElement('div'));
+  spinnerDiv.appendChild(document.createElement('div'));
   wrapperDiv.appendChild(spinnerDiv);
   return wrapperDiv;
 }
 // state
 var isDeathLoading = false;
-var isRecoveredLoading = false;
+// var isRecoveredLoading = false;
 // api
 function fetchCovidSummary() {
-  var url = "https://api.covid19api.com/summary";
+  var url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
 function fetchCountryInfo(countryCode, status) {
   // params: confirmed, recovered, deaths
-  var url = "https://api.covid19api.com/country/"
-    .concat(countryCode, "/status/")
+  var url = 'https://api.covid19api.com/country/'
+    .concat(countryCode, '/status/')
     .concat(status);
   return axios.get(url);
 }
@@ -184,7 +184,7 @@ function startApp() {
 }
 // events
 function initEvents() {
-  rankList.addEventListener("click", handleListClick);
+  rankList.addEventListener('click', handleListClick);
 }
 function handleListClick(event) {
   return __awaiter(this, void 0, void 0, function () {
@@ -208,13 +208,13 @@ function handleListClick(event) {
           clearRecoveredList();
           startLoadingAnimation();
           isDeathLoading = true;
-          return [4 /*yield*/, fetchCountryInfo(selectedId, "deaths")];
+          return [4 /*yield*/, fetchCountryInfo(selectedId, 'deaths')];
         case 1:
           deathResponse = _a.sent().data;
-          return [4 /*yield*/, fetchCountryInfo(selectedId, "recovered")];
+          return [4 /*yield*/, fetchCountryInfo(selectedId, 'recovered')];
         case 2:
           recoveredResponse = _a.sent().data;
-          return [4 /*yield*/, fetchCountryInfo(selectedId, "confirmed")];
+          return [4 /*yield*/, fetchCountryInfo(selectedId, 'confirmed')];
         case 3:
           confirmedResponse = _a.sent().data;
           endLoadingAnimation();
@@ -234,12 +234,12 @@ function setDeathsList(data) {
     return getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date);
   });
   sorted.forEach(function (value) {
-    var li = document.createElement("li");
-    li.setAttribute("class", "list-item-b flex align-center");
-    var span = document.createElement("span");
+    var li = document.createElement('li');
+    li.setAttribute('class', 'list-item-b flex align-center');
+    var span = document.createElement('span');
     span.textContent = value.Cases;
-    span.setAttribute("class", "deaths");
-    var p = document.createElement("p");
+    span.setAttribute('class', 'deaths');
+    var p = document.createElement('p');
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
@@ -257,12 +257,12 @@ function setRecoveredList(data) {
     return getUnixTimestamp(b.Date) - getUnixTimestamp(a.Date);
   });
   sorted.forEach(function (value) {
-    var li = document.createElement("li");
-    li.setAttribute("class", "list-item-b flex align-center");
-    var span = document.createElement("span");
+    var li = document.createElement('li');
+    li.setAttribute('class', 'list-item-b flex align-center');
+    var span = document.createElement('span');
     span.textContent = value.Cases;
-    span.setAttribute("class", "recovered");
-    var p = document.createElement("p");
+    span.setAttribute('class', 'recovered');
+    var p = document.createElement('p');
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
@@ -303,18 +303,18 @@ function setupData() {
   });
 }
 function renderChart(data, labels) {
-  var ctx = $("#lineChart").getContext("2d");
-  Chart.defaults.color = "#f5eaea";
-  Chart.defaults.font.family = "Exo 2";
+  var ctx = $('#lineChart').getContext('2d');
+  Chart.defaults.color = '#f5eaea';
+  Chart.defaults.font.family = 'Exo 2';
   new Chart(ctx, {
-    type: "line",
+    type: 'line',
     data: {
       labels: labels,
       datasets: [
         {
-          label: "Confirmed for the last two weeks",
-          backgroundColor: "#feb72b",
-          borderColor: "#feb72b",
+          label: 'Confirmed for the last two weeks',
+          backgroundColor: '#feb72b',
+          borderColor: '#feb72b',
           data: data,
         },
       ],
@@ -351,14 +351,14 @@ function setCountryRanksByConfirmedCases(data) {
     return b.TotalConfirmed - a.TotalConfirmed;
   });
   sorted.forEach(function (value) {
-    var li = document.createElement("li");
-    li.setAttribute("class", "list-item flex align-center");
-    li.setAttribute("id", value.Slug);
-    var span = document.createElement("span");
+    var li = document.createElement('li');
+    li.setAttribute('class', 'list-item flex align-center');
+    li.setAttribute('id', value.Slug);
+    var span = document.createElement('span');
     span.textContent = value.TotalConfirmed;
-    span.setAttribute("class", "cases");
-    var p = document.createElement("p");
-    p.setAttribute("class", "country");
+    span.setAttribute('class', 'cases');
+    var p = document.createElement('p');
+    p.setAttribute('class', 'country');
     p.textContent = value.Country;
     li.appendChild(span);
     li.appendChild(p);

@@ -1,8 +1,10 @@
 // 라이브러리 코딩
 // import 변수명 from '라이브러리 이름'
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import Chart from 'chart.js/auto';
 // import {} from '파일 상대 경로';
+// 타입모듈
+import { CovidSummaryResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -44,10 +46,11 @@ let isDeathLoading = false;
 // const isRecoveredLoading = false;
 
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+fetchCovidSummary().then(res => res.data);
 
 enum CovidStatus {
   Confrimed = 'confirmed',
