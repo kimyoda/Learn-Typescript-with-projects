@@ -11,15 +11,17 @@ import {
   CovidSummaryResponse,
 } from './covid/index';
 // utils
-function $(selector: string) {
-  return document.querySelector(selector);
+function $<T extends HTMLElement = HTMLDivElement>(selector: string) {
+  const element = document.querySelector(selector);
+  return element as T;
 }
 function getUnixTimestamp(date: Date | string) {
   return new Date(date).getTime();
 }
 
 // DOM
-const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
+// 유틸 함수성을 높이는 타입 정의(제네릭을 활용)
+const confirmedTotal = $<HTMLSpanElement>('.confirmed-total');
 // 타입을 단언하여 선언(as를 활용)
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
